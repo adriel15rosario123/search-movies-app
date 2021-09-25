@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SearchMoviesApp.Views;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -10,7 +11,7 @@ namespace SearchMoviesApp
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new SearchMoviePage();
         }
 
         protected override void OnStart()

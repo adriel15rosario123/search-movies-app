@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SearchMoviesApp.Views.SearchMoviePage"
+             BackgroundColor="LightGray">
+    <StackLayout>
+        
+        <Frame BackgroundColor="White" CornerRadius="15" Padding="0"  Margin="10" HasShadow="True">
+            <StackLayout Orientation="Horizontal" BackgroundColor="White" Margin="10">
+                
+                <Entry Placeholder="Search movies" 
+                       PlaceholderColor="Black" 
+                       FontSize="18" 
+                       TextColor="Black" 
+                       WidthRequest="330" 
+                       HorizontalOptions="CenterAndExpand" 
+                       Text="{Binding Expression}"/>
+
+                <Image Source="searchIcon.png" 
+                       Aspect="AspectFit" 
+                       HeightRequest="40" 
+                       HorizontalOptions="End" 
+                       Margin="10,0"
+                       >
+
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding SearchMovieCommand}"/>
+                    </Image.GestureRecognizers>
+                    
+                </Image>
+
+            </StackLayout>
+        </Frame>
+
+        <Grid RowDefinitions="*" ColumnDefinitions="*">
+            <ListView x:Name="MyListView"
+                    ItemsSource="{Binding Movies}"  HasUnevenRows="True" Margin="15,3,15,1" Grid.Row="0" Grid.Column="0">
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell >
+
+                            <StackLayout Orientation="Horizontal" Margin="5" BackgroundColor="White" >
+
+                                
+                                <Image HeightRequest="300" 
+                                       WidthRequest="200" 
+                                       Aspect="AspectFit"
+                                       Source="{Binding Image}"/>
+                                
+
+                                <Label Text="{Binding Title}" FontSize="20" TextColor="Black" Margin="1"/>
+
+                            </StackLayout>
+
+                        </ViewCell>
+
+                    </DataTemplate>
+
+                </ListView.ItemTemplate>
+
+            </ListView>
+
+        </Grid>
+
+    </StackLayout>
+</ContentPage>

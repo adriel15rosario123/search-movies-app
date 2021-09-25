@@ -18,9 +18,9 @@ namespace SearchMoviesApp.Services
             _api = RestService.For<IImdbApi>("https://imdb-api.com");
         }
 
-        public async Task<GetMoviesResponse> GetMoviesByNameAsync(string movieName)
+        public async Task<GetMoviesResponse> GetMoviesByNameAsync(string expression)
         {
-            var response = await _api.GetMoviesByNameAsync(movieName);
+            var response = await _api.GetMoviesByNameAsync(expression);
             if (response.IsSuccessStatusCode)
             {
                 var responseString = await response.Content.ReadAsStringAsync();

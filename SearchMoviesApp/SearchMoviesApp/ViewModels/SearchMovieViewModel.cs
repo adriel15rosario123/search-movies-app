@@ -19,7 +19,7 @@ namespace SearchMoviesApp.ViewModels
 
         public ICommand SearchMovieCommand { get; }
 
-        public string searchMovieIcon { get; } = "";
+        public string Expression { get; set; }
 
         public SearchMovieViewModel(IMovieApiService apiService)
         {
@@ -29,11 +29,13 @@ namespace SearchMoviesApp.ViewModels
 
         private async void OnSearchMovie()
         {
-            
+            Movies.Clear();
+            await GetMovieList(Expression);
         }
 
         public async Task GetMovieList(string name)
         {
+
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
             {
                 var response = await _apiService.GetMoviesByNameAsync(name);
